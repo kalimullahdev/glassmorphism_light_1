@@ -21,7 +21,7 @@ const Color _accentDeep = Color(0xFFFFA726);
 // ─────────────────────────────────────────────────────────────────────────────
 // Entry point
 // ─────────────────────────────────────────────────────────────────────────────
-Widget buildGridContent5(double baseGlow, BuildContext context) {
+Widget buildGridContent(double baseGlow, BuildContext context) {
   return LayoutBuilder(
     builder: (context, constraints) {
       final device = _deviceTypeFor(constraints.maxWidth);

@@ -1,9 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:glassmorphism_light/home_screen/new_code1.dart';
-import 'package:glassmorphism_light/home_screen/new_code3.dart';
-import 'package:glassmorphism_light/home_screen/new_code4.dart';
 import 'package:glassmorphism_light/home_screen/new_code5.dart';
 import 'light_bulb_painter.dart';
 import 'glass_card.dart';
@@ -282,7 +279,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         Positioned.fill(
           child: ValueListenableBuilder<double>(
             valueListenable: _glowNotifier,
-            builder: (context, glow, _) => buildGridContent5(glow, context),
+            builder: (context, glow, _) => buildGridContent(glow, context),
           ),
         ),
         const SizedBox(height: 40),
