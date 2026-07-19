@@ -292,69 +292,68 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               _buildProjectsSection(_getAttenuatedGlow(glow, 0.0), lightPos),
         ),
 
-        const SizedBox(height: 40),
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildHeroSection(_getAttenuatedGlow(glow, 0.0), lightPos),
-        ),
+        // const SizedBox(height: 40),
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildHeroSection(_getAttenuatedGlow(glow, 0.0), lightPos),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === FEATURES GRID ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildFeaturesSection(_getAttenuatedGlow(glow, 0.2), lightPos),
-        ),
+        // // === FEATURES GRID ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildFeaturesSection(_getAttenuatedGlow(glow, 0.2), lightPos),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === STATS BAR ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildStatsSection(_getAttenuatedGlow(glow, 0.4), lightPos),
-        ),
+        // // === STATS BAR ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildStatsSection(_getAttenuatedGlow(glow, 0.4), lightPos),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === SHOWCASE SECTION ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildShowcaseSection(_getAttenuatedGlow(glow, 0.6), lightPos),
-        ),
+        // // === SHOWCASE SECTION ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildShowcaseSection(_getAttenuatedGlow(glow, 0.6), lightPos),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === TESTIMONIALS ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) => _buildTestimonialsSection(
-            _getAttenuatedGlow(glow, 0.8),
-            lightPos,
-          ),
-        ),
+        // // === TESTIMONIALS ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) => _buildTestimonialsSection(
+        //     _getAttenuatedGlow(glow, 0.8),
+        //     lightPos,
+        //   ),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === PRICING SECTION ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildPricingSection(_getAttenuatedGlow(glow, 0.9), lightPos),
-        ),
+        // // === PRICING SECTION ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildPricingSection(_getAttenuatedGlow(glow, 0.9), lightPos),
+        // ),
 
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
 
-        // === FOOTER ===
-        ValueListenableBuilder<double>(
-          valueListenable: _glowNotifier,
-          builder: (context, glow, _) =>
-              _buildFooter(_getAttenuatedGlow(glow, 1.0), lightPos),
-        ),
-
+        // // === FOOTER ===
+        // ValueListenableBuilder<double>(
+        //   valueListenable: _glowNotifier,
+        //   builder: (context, glow, _) =>
+        //       _buildFooter(_getAttenuatedGlow(glow, 1.0), lightPos),
+        // ),
         const SizedBox(height: 100),
       ],
     );
@@ -659,124 +658,136 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   // ========================
 
   Widget _buildProjectsSection(double glow, Offset lightPos) {
-    final testimonials = [
-      _TestimonialData(
-        'Sarah Chen',
-        'Lead Designer',
-        'The glassmorphism effects are absolutely stunning. It feels like interacting with real glass — the light reflections and shadows add an incredible sense of depth.',
-      ),
-      _TestimonialData(
-        'Marcus Wright',
-        'CTO, NexaLabs',
-        'I\'ve never seen UI this beautiful. The way light dynamically affects every element creates an experience that feels truly alive and premium.',
-      ),
-      _TestimonialData(
-        'Aisha Patel',
-        'UX Architect',
-        'This sets a new standard for web design. The attention to detail in the glass effects and lighting system is extraordinary. Pure art.',
-      ),
+    // 1. Data structure strictly containing name and image
+    final projects = const [
+      (name: "Ming's Kitchen", image: "assets/mingskitchen.png"),
+      (name: "NexaLabs Dashboard", image: "assets/mingskitchen.png"),
+      (name: "Aurora Interface", image: "assets/mingskitchen.png"),
     ];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildSectionTitle(
             'PROJECTS',
             'Turning complex ideas into beautiful experiences',
             glow,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
           LayoutBuilder(
             builder: (context, constraints) {
-              final crossAxisCount = constraints.maxWidth > 850
+              // 2. Determine cross-axis count
+              final crossAxisCount = constraints.maxWidth > 950
                   ? 3
-                  : constraints.maxWidth > 550
+                  : constraints.maxWidth > 600
                   ? 2
                   : 1;
+
+              // 3. Responsive sizing with overflow protection
+              const spacing = 24.0;
+              final totalSpacing = spacing * (crossAxisCount - 1);
+              // Subtract 0.1 to avoid pixel rounding overflow issues in Wrap
               final cardWidth =
-                  (constraints.maxWidth - 24 * (crossAxisCount + 1)) /
-                  crossAxisCount;
+                  ((constraints.maxWidth - totalSpacing) / crossAxisCount) -
+                  0.1;
 
               return Wrap(
-                spacing: 0,
-                runSpacing: 0,
-                children: testimonials.map((t) {
+                spacing: spacing,
+                runSpacing: spacing,
+                children: projects.map((project) {
                   return SizedBox(
-                    width: cardWidth + 40,
-                    child: GlassCard(
-                      lightIntensity: glow,
-                      lightPosition: lightPos,
-                      borderRadius: 20,
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Quote icon
-                          Icon(
-                            Icons.format_quote_rounded,
-                            color: Color.lerp(
-                              Colors.white.withValues(alpha: 0.15),
-                              const Color(0xFFFFD48A).withValues(alpha: 0.35),
-                              glow,
-                            ),
-                            size: 32,
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            t.quote,
-                            style: TextStyle(
-                              fontSize: 13,
-                              height: 1.7,
-                              fontStyle: FontStyle.italic,
-                              color: Color.lerp(
-                                Colors.white.withValues(alpha: 0.45),
-                                const Color(0xFFFFE8C0).withValues(alpha: 0.7),
-                                glow,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          Divider(
-                            color: Colors.white.withValues(
-                              alpha: 0.05 + glow * 0.05,
-                            ),
-                            height: 1,
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            t.name,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: Color.lerp(
-                                Colors.white.withValues(alpha: 0.7),
-                                const Color(0xFFFFF3E0),
-                                glow,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            t.role,
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: Color.lerp(
-                                Colors.white.withValues(alpha: 0.3),
-                                const Color(0xFFFFD48A).withValues(alpha: 0.5),
-                                glow,
-                              ),
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ],
-                      ),
+                    width: cardWidth,
+                    child: _buildProjectCard(
+                      name: project.name,
+                      imagePath: project.image,
+                      glow: glow,
+                      lightPos: lightPos,
                     ),
                   );
                 }).toList(),
               );
             },
           ),
+        ],
+      ),
+    );
+  }
+
+  // Extracted widget for better readability and performance
+  Widget _buildProjectCard({
+    required String name,
+    required String imagePath,
+    required double glow,
+    required Offset lightPos,
+  }) {
+    return GlassCard(
+      lightIntensity: glow,
+      lightPosition: lightPos,
+      borderRadius: 24,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Premium Image Container with inner shadow and rounded corners
+          Container(
+            height: 220,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.black.withValues(
+                alpha: 0.1,
+              ), // Subtle placeholder background
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.15),
+                  blurRadius: 15,
+                  offset: const Offset(0, 8),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // Graceful degradation for missing assets
+                  return Center(
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      color: Colors.white.withValues(alpha: 0.2),
+                      size: 40,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Project Title text that responds to the light source
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Text(
+              name,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+                color: Color.lerp(
+                  Colors.white.withValues(alpha: 0.85),
+                  const Color(0xFFFFF3E0), // Warms up based on the glow
+                  glow,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          const SizedBox(height: 4),
         ],
       ),
     );
