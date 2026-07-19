@@ -31,7 +31,7 @@ Widget buildGridContent(double baseGlow, BuildContext context) {
       // with the wide "ILLUMINATED GLASSMORPHISM" widget below it.
       return Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: device == DeviceType.mobile ? 16.0 : 0.0,
+          horizontal: device == DeviceType.mobile ? 16.0 : 24.0,
           vertical: 16.0,
         ),
         child: _buildResponsiveCards(baseGlow, device),
@@ -105,9 +105,7 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
           children: [
             // FIX: Updated ratio to 7:10:7 giving side cards more space for text
             Expanded(flex: 7, child: statLeft),
-            const SizedBox(width: 16), // FIX: Decreased gap distance
             Expanded(flex: 10, child: hero),
-            const SizedBox(width: 16), // FIX: Decreased gap distance
             Expanded(flex: 7, child: statRight),
           ],
         ),
@@ -118,13 +116,12 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
         mainAxisSize: MainAxisSize.min,
         children: [
           hero,
-          const SizedBox(height: 16), // Decreased gap
+          const SizedBox(height: 8), // Decreased gap
           IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(child: statLeft),
-                const SizedBox(width: 16), // Decreased gap
                 Expanded(child: statRight),
               ],
             ),

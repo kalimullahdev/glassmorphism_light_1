@@ -656,7 +656,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     final projects = const [
       (name: "Ming's Kitchen", image: "assets/mingskitchen.png"),
       (name: "Holedo", image: "assets/holedo.png"),
-      (name: "Aurora Interface", image: "assets/habit_tracker.png"),
+      (name: "Habit Tracker", image: "assets/habit_tracker.png"),
     ];
 
     return Padding(
@@ -680,7 +680,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   : 1;
 
               // 3. Responsive sizing with overflow protection
-              const spacing = 24.0;
+              const spacing = 0.0;
               final totalSpacing = spacing * (crossAxisCount - 1);
               // Subtract 0.1 to avoid pixel rounding overflow issues in Wrap
               final cardWidth =
