@@ -664,11 +664,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _buildSectionTitle(
-            'PROJECTS',
-            'Turning complex ideas into beautiful experiences',
-            glow,
-          ),
+          _buildSectionTitle('PROJECTS', 'Plan. Build. Test. Deliver', glow),
           const SizedBox(height: 32),
           LayoutBuilder(
             builder: (context, constraints) {
