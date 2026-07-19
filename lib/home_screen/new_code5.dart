@@ -67,7 +67,7 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
     details: _StatList(
       glow: baseGlow,
       items: const [
-        (title: 'Matric', date: '2002-2014'),
+        (title: 'Start to Matric', date: '2002-2014'),
         (title: 'FSc', date: '2015-2016'),
         (title: 'BSSE', date: '2017-2021'),
       ],
