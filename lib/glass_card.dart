@@ -30,7 +30,8 @@ class GlassCard extends StatefulWidget {
   State<GlassCard> createState() => _GlassCardState();
 }
 
-class _GlassCardState extends State<GlassCard> with SingleTickerProviderStateMixin {
+class _GlassCardState extends State<GlassCard>
+    with SingleTickerProviderStateMixin {
   bool _isHovered = false;
 
   @override
@@ -55,8 +56,8 @@ class _GlassCardState extends State<GlassCard> with SingleTickerProviderStateMix
         height: widget.height,
         transform: _isHovered
             ? (Matrix4.identity()
-              ..translateByDouble(0.0, -4.0, 0.0, 1.0)
-              ..scaleByDouble(1.01, 1.01, 1.0, 1.0))
+                ..translateByDouble(0.0, -4.0, 0.0, 1.0)
+                ..scaleByDouble(1.01, 1.01, 1.0, 1.0))
             : Matrix4.identity(),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(br),
@@ -131,7 +132,9 @@ class _GlassCardState extends State<GlassCard> with SingleTickerProviderStateMix
                       child: IgnorePointer(
                         child: DecoratedBox(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(br - widget.glassThickness),
+                            borderRadius: BorderRadius.circular(
+                              br - widget.glassThickness,
+                            ),
                             gradient: RadialGradient(
                               center: highlightAlignment,
                               radius: 1.5,
