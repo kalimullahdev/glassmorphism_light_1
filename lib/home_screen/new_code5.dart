@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism_light/glass_card.dart';
+import 'package:glassmorphism_light/light_bulb_painter.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Responsive breakpoints
@@ -413,33 +414,7 @@ class ProfileHeader extends StatelessWidget {
   }
 
   Widget _avatar(double size) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Color.lerp(
-            Colors.white.withValues(alpha: 0.2),
-            _accent.withValues(alpha: 0.5),
-            glow,
-          )!,
-          width: 2,
-        ),
-        image: const DecorationImage(
-          image: AssetImage("assets/kalimullah_main.jpg"),
-          fit: BoxFit.cover,
-        ),
-        boxShadow: glow > 0.1
-            ? [
-                BoxShadow(
-                  color: _accent.withValues(alpha: glow * 0.4),
-                  blurRadius: 20,
-                ),
-              ]
-            : const [],
-      ),
-    );
+    return AvatarWithBulb(size: size, mainGlow: glow);
   }
 
   Widget _headingText(double fontSize, TextAlign align) {
@@ -477,6 +452,218 @@ class ProfileHeader extends StatelessWidget {
           const Color(0xFFFFE8C0).withValues(alpha: 0.75),
           glow,
         ),
+      ),
+    );
+  }
+}
+
+class AvatarWithBulb extends StatefulWidget {
+  final double size;
+  final double mainGlow;
+
+  const AvatarWithBulb({
+    super.key,
+    required this.size,
+    required this.mainGlow,
+  });
+
+  @override
+  State<AvatarWithBulb> createState() => _AvatarWithBulbState();
+}
+
+class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProviderStateMixin {
+  bool _isHovered = false;
+  late AnimationController _pulseController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1800),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final targetGlow = widget.mainGlow > 0.1
+        ? widget.mainGlow
+        : (_isHovered ? 0.9 : 0.0);
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: TweenAnimationBuilder<double>(
+        tween: Tween<double>(begin: 0.0, end: targetGlow),
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeOutCubic,
+        builder: (context, glowValue, child) {
+          return AnimatedBuilder(
+            animation: _pulseController,
+            builder: (context, _) {
+              final pulse = _pulseController.value;
+              final effectiveGlow = glowValue * (0.93 + pulse * 0.07);
+
+              return SizedBox(
+                width: widget.size,
+                height: widget.size,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Color.lerp(
+                        Colors.white.withValues(alpha: 0.2),
+                        _accent.withValues(alpha: 0.5),
+                        effectiveGlow,
+                      )!,
+                      width: 2,
+                    ),
+                    boxShadow: effectiveGlow > 0.1
+                        ? [
+                            BoxShadow(
+                              color: _accent.withValues(alpha: effectiveGlow * 0.4),
+                              blurRadius: 20,
+                            ),
+                          ]
+                        : const [],
+                  ),
+                  child: ClipOval(
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        // A. The Profile Image
+                        Image.asset(
+                          "assets/kalimullah_main.jpg",
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.black.withValues(alpha: 0.2),
+                              child: const Center(
+                                child: Icon(
+                                  Icons.person_outline,
+                                  color: Colors.white24,
+                                  size: 40,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+
+                        // B. Dark Room Overlay
+                        IgnorePointer(
+                          child: Container(
+                            color: Colors.black.withValues(
+                              alpha: (1.0 - effectiveGlow).clamp(0.0, 1.0) * 0.78,
+                            ),
+                          ),
+                        ),
+
+                        // C. Light Cone & Hotspot Overlays
+                        if (effectiveGlow > 0.01) ...[
+                          IgnorePointer(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    const Color(0xFFFFD54F).withValues(alpha: effectiveGlow * 0.26),
+                                    const Color(0xFFFFB74D).withValues(alpha: effectiveGlow * 0.06),
+                                    Colors.transparent,
+                                  ],
+                                  stops: const [0.0, 0.6, 1.0],
+                                ),
+                              ),
+                            ),
+                          ),
+                          IgnorePointer(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: RadialGradient(
+                                  center: Alignment.topCenter,
+                                  radius: 0.8,
+                                  colors: [
+                                    const Color(0xFFFFF9C4).withValues(alpha: effectiveGlow * 0.45),
+                                    const Color(0xFFFFE082).withValues(alpha: effectiveGlow * 0.12),
+                                    Colors.transparent,
+                                  ],
+                                  stops: const [0.0, 0.35, 1.0],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+
+                        // D. Premium Glass Reflections / Highlights
+                        IgnorePointer(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Colors.white.withValues(
+                                    alpha: 0.03 + effectiveGlow * 0.02,
+                                  ),
+                                  Colors.transparent,
+                                ],
+                                stops: const [0.0, 0.3],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // E. Subtle Inner border
+                        IgnorePointer(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 1.2,
+                                color: Color.lerp(
+                                  Colors.white.withValues(alpha: 0.08),
+                                  const Color(0xFFFFD54F).withValues(alpha: 0.22),
+                                  effectiveGlow,
+                                )!,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // 2. Hanging Light Bulb (Moved INSIDE ClipOval with top: 0 to connect to border perfectly)
+                        Positioned(
+                          top: 0, 
+                          left: 0,
+                          right: 0,
+                          child: IgnorePointer(
+                            child: Center(
+                              child: SizedBox(
+                                width: 32,
+                                height: 26, // Reduced height to shorten the wire
+                                child: CustomPaint(
+                                  painter: LightBulbPainter(
+                                    glowIntensity: effectiveGlow,
+                                    flickerValue: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
