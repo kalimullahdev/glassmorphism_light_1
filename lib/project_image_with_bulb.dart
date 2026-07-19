@@ -168,7 +168,7 @@ class _ProjectImageWithBulbState extends State<ProjectImageWithBulb>
                             effectiveGlow,
                           )!,
                         ),
-                        borderRadius: BorderRadius.circular(16),
+                        // borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                   ),
