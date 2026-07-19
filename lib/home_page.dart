@@ -661,8 +661,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     // 1. Data structure strictly containing name and image
     final projects = const [
       (name: "Ming's Kitchen", image: "assets/mingskitchen.png"),
-      (name: "NexaLabs Dashboard", image: "assets/mingskitchen.png"),
-      (name: "Aurora Interface", image: "assets/mingskitchen.png"),
+      (name: "Holedo", image: "assets/holedo.png"),
+      (name: "Aurora Interface", image: "assets/habit_tracker.png"),
     ];
 
     return Padding(
