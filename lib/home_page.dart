@@ -6,6 +6,7 @@ import 'light_bulb_painter.dart';
 import 'glass_card.dart';
 import 'floating_particles.dart';
 import 'light_toggle_button.dart';
+import 'project_image_with_bulb.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -122,7 +123,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           // === BACKGROUND ===
           _buildBackground(),
-
           // === FLOATING PARTICLES ===
           Positioned.fill(
             child: IgnorePointer(
@@ -142,7 +142,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-
           // === SCROLLABLE ROOM CONTENT ===
           Positioned.fill(
             child: SingleChildScrollView(
@@ -169,10 +168,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       );
                     },
                   ),
-
                   // === MAIN CONTENT ===
                   _buildContent(),
-
                   // === LIGHT BULB ===
                   ValueListenableBuilder<double>(
                     valueListenable: _glowNotifier,
@@ -745,23 +742,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  // Graceful degradation for missing assets
-                  return Center(
-                    child: Icon(
-                      Icons.image_not_supported_outlined,
-                      color: Colors.white.withValues(alpha: 0.2),
-                      size: 40,
-                    ),
-                  );
-                },
-              ),
-            ),
+            child: ProjectImageWithBulb(imagePath: imagePath, mainGlow: glow),
           ),
           const SizedBox(height: 20),
 
