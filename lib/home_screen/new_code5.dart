@@ -68,8 +68,8 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
     details: _StatList(
       glow: baseGlow,
       items: const [
-        (title: 'Start to Matric', date: '2002-2014'),
-        (title: 'FSc', date: '2015-2016'),
+        (title: 'Start to Matric', date: '2003-2015'),
+        (title: 'FSc', date: '2015-2017'),
         (title: 'BSSE', date: '2017-2021'),
       ],
     ),
@@ -461,17 +461,14 @@ class AvatarWithBulb extends StatefulWidget {
   final double size;
   final double mainGlow;
 
-  const AvatarWithBulb({
-    super.key,
-    required this.size,
-    required this.mainGlow,
-  });
+  const AvatarWithBulb({super.key, required this.size, required this.mainGlow});
 
   @override
   State<AvatarWithBulb> createState() => _AvatarWithBulbState();
 }
 
-class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProviderStateMixin {
+class _AvatarWithBulbState extends State<AvatarWithBulb>
+    with SingleTickerProviderStateMixin {
   bool _isHovered = false;
   late AnimationController _pulseController;
 
@@ -527,7 +524,9 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
                     boxShadow: effectiveGlow > 0.1
                         ? [
                             BoxShadow(
-                              color: _accent.withValues(alpha: effectiveGlow * 0.4),
+                              color: _accent.withValues(
+                                alpha: effectiveGlow * 0.4,
+                              ),
                               blurRadius: 20,
                             ),
                           ]
@@ -559,7 +558,8 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
                         IgnorePointer(
                           child: Container(
                             color: Colors.black.withValues(
-                              alpha: (1.0 - effectiveGlow).clamp(0.0, 1.0) * 0.78,
+                              alpha:
+                                  (1.0 - effectiveGlow).clamp(0.0, 1.0) * 0.78,
                             ),
                           ),
                         ),
@@ -573,8 +573,12 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    const Color(0xFFFFD54F).withValues(alpha: effectiveGlow * 0.26),
-                                    const Color(0xFFFFB74D).withValues(alpha: effectiveGlow * 0.06),
+                                    const Color(
+                                      0xFFFFD54F,
+                                    ).withValues(alpha: effectiveGlow * 0.26),
+                                    const Color(
+                                      0xFFFFB74D,
+                                    ).withValues(alpha: effectiveGlow * 0.06),
                                     Colors.transparent,
                                   ],
                                   stops: const [0.0, 0.6, 1.0],
@@ -589,8 +593,12 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
                                   center: Alignment.topCenter,
                                   radius: 0.8,
                                   colors: [
-                                    const Color(0xFFFFF9C4).withValues(alpha: effectiveGlow * 0.45),
-                                    const Color(0xFFFFE082).withValues(alpha: effectiveGlow * 0.12),
+                                    const Color(
+                                      0xFFFFF9C4,
+                                    ).withValues(alpha: effectiveGlow * 0.45),
+                                    const Color(
+                                      0xFFFFE082,
+                                    ).withValues(alpha: effectiveGlow * 0.12),
                                     Colors.transparent,
                                   ],
                                   stops: const [0.0, 0.35, 1.0],
@@ -628,7 +636,9 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
                                 width: 1.2,
                                 color: Color.lerp(
                                   Colors.white.withValues(alpha: 0.08),
-                                  const Color(0xFFFFD54F).withValues(alpha: 0.22),
+                                  const Color(
+                                    0xFFFFD54F,
+                                  ).withValues(alpha: 0.22),
                                   effectiveGlow,
                                 )!,
                               ),
@@ -638,14 +648,15 @@ class _AvatarWithBulbState extends State<AvatarWithBulb> with SingleTickerProvid
 
                         // 2. Hanging Light Bulb (Moved INSIDE ClipOval with top: 0 to connect to border perfectly)
                         Positioned(
-                          top: 0, 
+                          top: 0,
                           left: 0,
                           right: 0,
                           child: IgnorePointer(
                             child: Center(
                               child: SizedBox(
                                 width: 32,
-                                height: 26, // Reduced height to shorten the wire
+                                height:
+                                    26, // Reduced height to shorten the wire
                                 child: CustomPaint(
                                   painter: LightBulbPainter(
                                     glowIntensity: effectiveGlow,
