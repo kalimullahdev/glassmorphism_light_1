@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalim Ullah — Record of Education · 2004–2021</title>
+  <meta name="description"
+    content="Seventeen years of schooling, transcribed from the original result cards, board certificates and university transcript of Kalim Ullah.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F5F2E9;
+      --panel: #EFEAD9;
+      --panel-deep: #E9E2CD;
+      --ink: #1E2A44;
+      --ink-soft: #4A5673;
+      --ink-body: #333D58;
+      --rule: #CFC8B4;
+      --rule-soft: #DDD6C2;
+      --stamp: #B3312D;
+      --gold: #8F6B1E;
+      --gold-bright: #C9A64A;
+      --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+      --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    ::selection {
+      background: var(--ink);
+      color: var(--paper)
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* faint paper grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.32 0 0 0 0 0.24 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .frame {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: clamp(10px, 2.5vw, 28px) auto;
+      border: 1px solid var(--ink);
+      box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px var(--rule);
+      background: var(--paper);
+    }
+
+    .band {
+      padding: clamp(44px, 7vw, 88px) clamp(20px, 5.5vw, 72px)
+    }
+
+    .band+.band {
+      border-top: 1px solid var(--rule)
+    }
+
+    /* ---------- shared type ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px
+    }
+
+    .section-head::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid var(--rule)
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(24px, 3.4vw, 34px);
+      letter-spacing: .02em;
+      line-height: 1.2;
+      margin: 6px 0 14px;
+    }
+
+    .deck {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-soft);
+      font-size: clamp(15px, 1.9vw, 18px);
+      max-width: 62ch;
+    }
+
+    .mono {
+      font-family: var(--mono)
+    }
+
+    /* ---------- stamps ---------- */
+    .stamp {
+      display: inline-block;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--stamp);
+      border: 2px solid currentColor;
+      border-radius: 5px;
+      padding: .34em .7em .3em;
+      transform: rotate(-2.5deg);
+      background: transparent;
+      white-space: nowrap;
+      box-shadow: inset 0 0 6px rgba(179, 49, 45, .12);
+    }
+
+    .stamp.gold {
+      color: var(--gold);
+      box-shadow: inset 0 0 6px rgba(143, 107, 30, .14)
+    }
+
+    .stamp.navy {
+      color: var(--ink);
+      box-shadow: inset 0 0 6px rgba(30, 42, 68, .12)
+    }
+
+    .stamp.ghost {
+      color: #9a917c;
+      border-style: dashed;
+      box-shadow: none
+    }
+
+    /* ---------- ledger rows (dotted leaders) ---------- */
+    .row {
+      display: flex;
+      align-items: baseline;
+      gap: .6em;
+      padding: 3px 0
+    }
+
+    .row .k {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap
+    }
+
+    .row .leader {
+      flex: 1;
+      min-width: 24px;
+      border-bottom: 2px dotted var(--rule);
+      transform: translateY(-4px)
+    }
+
+    .row .v {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right
+    }
+
+    .row .v small {
+      font-weight: 500;
+      color: var(--ink-soft)
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding-top: clamp(30px, 5vw, 52px)
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: clamp(36px, 6vw, 64px)
+    }
+
+    .serial {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: .18em;
+      color: var(--stamp);
+      border: 2px solid var(--stamp);
+      border-radius: 5px;
+      padding: .3em .7em;
+      transform: rotate(1.5deg);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(44px, 9.5vw, 96px);
+      line-height: 1.02;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .hero .lineage {
+      font-family: var(--mono);
+      font-size: clamp(12px, 1.6vw, 14.5px);
+      letter-spacing: .08em;
+      color: var(--ink-soft);
+      margin: 18px 0 22px;
+    }
+
+    .hero .deck {
+      margin-bottom: 34px
+    }
+
+    .summary {
+      border-top: 3px double var(--ink);
+      border-bottom: 3px double var(--ink);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 6px 0 34px;
+    }
+
+    .summary .cell {
+      padding: 16px 14px;
+      border-left: 1px solid var(--rule)
+    }
+
+    .summary .cell:first-child {
+      border-left: none
+    }
+
+    .summary .num {
+      font-family: var(--serif);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.1
+    }
+
+    .summary .lbl {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 4px
+    }
+
+    .cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      appearance: none;
+      cursor: pointer;
+      border: 2px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: .05em;
+      padding: 15px 26px;
+      border-radius: 6px;
+      box-shadow: 4px 4px 0 rgba(30, 42, 68, .22);
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 6px 6px 0 rgba(30, 42, 68, .25)
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 rgba(30, 42, 68, .25)
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--gold-bright);
+      outline-offset: 3px
+    }
+
+    .btn[disabled] {
+      opacity: .65;
+      cursor: progress
+    }
+
+    .cta-note {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-soft);
+      letter-spacing: .04em
+    }
+
+    /* ---------- chart ---------- */
+    .chart-card {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: clamp(14px, 2.5vw, 26px);
+      margin-top: 26px
+    }
+
+    .chart-card svg {
+      display: block;
+      width: 100%;
+      height: auto
+    }
+
+    .legend {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 12px
+    }
+
+    .legend span {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .dotkey {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2.5px solid var(--ink);
+      background: var(--paper);
+      display: inline-block
+    }
+
+    .dotkey.red {
+      border-color: var(--stamp)
+    }
+
+    .dotkey.gold {
+      border-color: var(--gold);
+      background: var(--gold-bright)
+    }
+
+    .dotkey.hollow {
+      border-style: dashed
+    }
+
+    /* ---------- chapters & entries ---------- */
+    .chapter {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: clamp(40px, 6vw, 60px) 0 8px
+    }
+
+    .chapter:first-of-type {
+      margin-top: 8px
+    }
+
+    .chapter::before,
+    .chapter::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid var(--rule)
+    }
+
+    .chapter .t {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-align: center
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: clamp(16px, 3vw, 34px);
+      padding: clamp(24px, 3.5vw, 34px) 0;
+      border-top: 1px dashed var(--rule);
+    }
+
+    .entry:first-of-type {
+      border-top: none
+    }
+
+    .chapter+.entry {
+      border-top: none
+    }
+
+    .yearplate {
+      align-self: start;
+      justify-self: start;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: .06em;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: .42em .6em;
+      transform: rotate(-2deg);
+      background: var(--paper);
+      box-shadow: 3px 3px 0 rgba(30, 42, 68, .14);
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .entry h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(20px, 2.6vw, 26px);
+      line-height: 1.25
+    }
+
+    .inst {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .05em;
+      color: var(--ink-soft);
+      margin: 6px 0 14px
+    }
+
+    .entry .rows {
+      max-width: 560px
+    }
+
+    .papers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px
+    }
+
+    .chip {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      background: var(--panel);
+      border-radius: 99px;
+      padding: .3em .8em;
+      white-space: nowrap;
+    }
+
+    .chip b {
+      font-weight: 700
+    }
+
+    .remark {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink-soft);
+      border-left: 3px solid var(--rule);
+      padding: 2px 0 2px 14px;
+      margin-top: 16px;
+      font-size: 15px;
+      max-width: 56ch;
+    }
+
+    .remark .who {
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: block;
+      margin-top: 5px
+    }
+
+    .footnote {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-top: 14px;
+      letter-spacing: .02em
+    }
+
+    .missing {
+      border: 2px dashed var(--rule);
+      border-radius: 8px;
+      background: transparent;
+      padding: clamp(18px, 3vw, 26px);
+      color: var(--ink-soft);
+    }
+
+    .missing p {
+      font-size: 14.5px;
+      max-width: 60ch
+    }
+
+    /* ---------- degree band ---------- */
+    .degree {
+      background: var(--panel);
+    }
+
+    .degree-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: clamp(24px, 4vw, 52px);
+      align-items: start;
+      margin-top: 30px
+    }
+
+    .dial-wrap {
+      text-align: center
+    }
+
+    .dial-wrap svg {
+      width: 100%;
+      max-width: 210px;
+      height: auto
+    }
+
+    .dial-cap {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 10px
+    }
+
+    .gpa-chart {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: clamp(12px, 2vw, 20px);
+      margin: 18px 0 6px
+    }
+
+    .gpa-chart svg {
+      display: block;
+      width: 100%;
+      height: auto
+    }
+
+    .distinct {
+      margin-top: 22px
+    }
+
+    .distinct h4 {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 10px
+    }
+
+    .closing-line {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--ink);
+      font-size: clamp(16px, 2.2vw, 19px);
+      border-top: 3px double var(--ink);
+      margin-top: 30px;
+      padding-top: 18px;
+      max-width: 64ch;
+    }
+
+    .closing-line .src {
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      display: block;
+      margin-top: 8px
+    }
+
+    /* ---------- vault ---------- */
+    .vault {
+      border: 2px dashed var(--ink);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: clamp(28px, 5vw, 52px);
+      text-align: center;
+    }
+
+    .vault .eyebrow {
+      color: var(--stamp)
+    }
+
+    .vault h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(24px, 3.6vw, 36px);
+      margin: 12px 0 14px;
+      line-height: 1.2
+    }
+
+    .vault p {
+      max-width: 58ch;
+      margin: 0 auto 26px;
+      color: var(--ink-body)
+    }
+
+    .vault .cta-note {
+      display: block;
+      margin-top: 14px
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      padding: clamp(28px, 4vw, 44px) clamp(20px, 5.5vw, 72px);
+      border-top: 3px double var(--ink)
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--ink-soft);
+      letter-spacing: .02em;
+      max-width: 78ch
+    }
+
+    footer .sig {
+      margin-top: 14px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink)
+    }
+
+    /* ---------- reveal motion ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .reveal .stamp {
+      transform: rotate(-2.5deg) scale(1.25);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(.2, 1.4, .4, 1) .35s, opacity .3s ease .35s
+    }
+
+    .reveal.in .stamp {
+      transform: rotate(-2.5deg) scale(1);
+      opacity: 1
+    }
+
+    .serial {
+      transition: transform .5s cubic-bezier(.2, 1.4, .4, 1) .3s
+    }
+
+    #trend-path {
+      transition: stroke-dashoffset 2.2s ease .2s
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      .reveal,
+      .reveal .stamp,
+      #trend-path {
+        transition: none;
+        opacity: 1;
+        transform: none
+      }
+
+      .reveal .stamp {
+        transform: rotate(-2.5deg)
+      }
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width:860px) {
+      .summary {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .summary .cell:nth-child(3) {
+        border-left: none
+      }
+
+      .summary .cell {
+        border-top: 1px solid var(--rule)
+      }
+
+      .summary .cell:nth-child(-n+2) {
+        border-top: none
+      }
+
+      .degree-grid {
+        grid-template-columns: 1fr
+      }
+
+      .dial-wrap {
+        max-width: 230px;
+        margin: 0 auto
+      }
+    }
+
+    @media (max-width:680px) {
+      .entry {
+        grid-template-columns: 1fr;
+        gap: 14px
+      }
+
+      .yearplate {
+        font-size: 15px
+      }
+
+      .row .k {
+        font-size: 11px
+      }
+
+      .row .v {
+        font-size: 13px
+      }
+
+      .hero h1 {
+        letter-spacing: .03em
+      }
+    }
+
+    @media (max-width:420px) {
+      .summary {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .btn {
+        width: 100%
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="frame">
+
+    <!-- ══════════════ HERO / COVER SHEET ══════════════ -->
+    <header class="band hero">
+      <div class="hero-top">
+        <span class="eyebrow">Official record of education</span>
+        <span class="serial">2021 — 2004</span>
+      </div>
+      <h1>Kalim&nbsp;Ullah</h1>
+      <p class="lineage">s/o Mati Ullah &nbsp;·&nbsp; Pishin, Balochistan &nbsp;⟶&nbsp; Taunsa &nbsp;⟶&nbsp; Sargodha,
+        Punjab</p>
+      <p class="deck">Seventeen years of schooling, transcribed from the original result cards, board certificates and
+        the university transcript — the strong years and the hard ones alike, exactly as the documents record them.
+        Presented newest first: the degree at the top, the Nursery card at the very end.</p>
+
+      <div class="summary reveal">
+        <div class="cell">
+          <div class="num">17</div>
+          <div class="lbl">Years on record</div>
+        </div>
+        <div class="cell">
+          <div class="num">5</div>
+          <div class="lbl">Institutions</div>
+        </div>
+        <div class="cell">
+          <div class="num">2</div>
+          <div class="lbl">Examination boards</div>
+        </div>
+        <div class="cell">
+          <div class="num">BS&nbsp;(SE)</div>
+          <div class="lbl">Final degree · CGPA 2.82</div>
+        </div>
+      </div>
+
+      <div class="cta-wrap">
+        <button class="btn" type="button" data-download>Download education original documents</button>
+        <span class="cta-note">Education_history.pdf · 29 pages · 21.3&nbsp;MB</span>
+      </div>
+    </header>
+
+    <!-- ══════════════ THE DEGREE ══════════════ -->
+    <section class="band degree">
+      <div class="section-head"><span class="eyebrow">Exhibit A · 2017 – 2021 · Where the record stands today</span>
+      </div>
+      <h2 class="section-title">Bachelor of Science — Software Engineering</h2>
+      <p class="deck">University of Sargodha · Session 2017–2021 · Result notified 15 October 2021. "He has completed
+        all the requirements for the award of Degree of BS Software Engineering." — the transcript's own closing line.
+      </p>
+
+      <div class="degree-grid">
+        <div class="dial-wrap reveal">
+          <svg viewBox="0 0 180 180" role="img" aria-label="Dial showing cumulative GPA 2.82 out of 4.00">
+            <circle cx="90" cy="90" r="76" fill="none" stroke="#C9A64A" stroke-width="1.5" stroke-dasharray="2 4" />
+            <circle cx="90" cy="90" r="64" fill="none" stroke="#DDD6C2" stroke-width="10" />
+            <circle cx="90" cy="90" r="64" fill="none" stroke="#1E2A44" stroke-width="10" stroke-linecap="round"
+              stroke-dasharray="283.5 402.1" transform="rotate(-90 90 90)" />
+            <text x="90" y="92" text-anchor="middle" font-family="Libre Caslon Text,Georgia,serif" font-weight="700"
+              font-size="40" fill="#1E2A44">2.82</text>
+            <text x="90" y="116" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10.5"
+              letter-spacing="2" fill="#4A5673">CGPA OF 4.00</text>
+          </svg>
+          <div class="dial-cap">Degree awarded</div>
+          <div class="rows" style="text-align:left;margin-top:14px">
+            <div class="row"><span class="k">Marks</span><span class="leader"></span><span class="v">3094/4500</span>
+            </div>
+            <div class="row"><span class="k">Percentage</span><span class="leader"></span><span class="v">68.75%</span>
+            </div>
+            <div class="row"><span class="k">Credit hours</span><span class="leader"></span><span class="v">138</span>
+            </div>
+            <div class="row"><span class="k">Courses</span><span class="leader"></span><span class="v">45 <small>· 8
+                  semesters</small></span></div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="gpa-chart">
+            <svg viewBox="0 0 640 300" role="img"
+              aria-label="Bar chart of semester GPAs: 2.87, 3.06, 2.75, 2.59, 2.51, 2.92, 2.68 and 3.26, with the CGPA of 2.82 marked as a dashed line.">
+              <line x1="40" y1="30" x2="600" y2="30" stroke="#DDD6C2" stroke-width="1" stroke-dasharray="3 5" />
+              <text x="34" y="34" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="11"
+                fill="#4A5673">4.00</text>
+              <line x1="40" y1="250" x2="600" y2="250" stroke="#1E2A44" stroke-width="1.5" />
+              <!-- bars -->
+              <g fill="#1E2A44">
+                <rect x="60" y="92.2" width="44" height="157.8" rx="3" />
+                <rect x="130" y="81.7" width="44" height="168.3" rx="3" />
+                <rect x="200" y="98.8" width="44" height="151.2" rx="3" />
+                <rect x="270" y="107.6" width="44" height="142.4" rx="3" />
+                <rect x="340" y="112" width="44" height="138" rx="3" />
+                <rect x="410" y="89.4" width="44" height="160.6" rx="3" />
+                <rect x="480" y="102.6" width="44" height="147.4" rx="3" />
+                <rect x="550" y="70.7" width="44" height="179.3" rx="3" fill="#C9A64A" stroke="#8F6B1E"
+                  stroke-width="1.5" />
+              </g>
+              <!-- CGPA line -->
+              <line x1="40" y1="94.9" x2="600" y2="94.9" stroke="#B3312D" stroke-width="1.75" stroke-dasharray="6 5" />
+              <text x="600" y="88" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="11.5"
+                font-weight="600" fill="#B3312D">CGPA 2.82</text>
+              <!-- values -->
+              <g font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600" fill="#1E2A44"
+                text-anchor="middle">
+                <text x="82" y="84">2.87</text>
+                <text x="152" y="74">3.06</text>
+                <text x="222" y="91">2.75</text>
+                <text x="292" y="100">2.59</text>
+                <text x="362" y="104">2.51</text>
+                <text x="432" y="82">2.92</text>
+                <text x="502" y="95">2.68</text>
+                <text x="572" y="63" fill="#8F6B1E">3.26</text>
+              </g>
+              <!-- semester labels -->
+              <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#4A5673" text-anchor="middle">
+                <text x="82" y="270">S-I</text>
+                <text x="152" y="270">S-II</text>
+                <text x="222" y="270">S-III</text>
+                <text x="292" y="270">S-IV</text>
+                <text x="362" y="270">S-V</text>
+                <text x="432" y="270">S-VI</text>
+                <text x="502" y="270">S-VII</text>
+                <text x="572" y="270">S-VIII</text>
+              </g>
+              <text x="320" y="292" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10"
+                letter-spacing="2" fill="#9a917c">GPA BY SEMESTER — THE FINAL SEMESTER WAS THE STRONGEST</text>
+            </svg>
+          </div>
+
+          <div class="distinct">
+            <h4>Distinctions on the transcript</h4>
+            <div class="papers">
+              <span class="chip">A+ · Financial Accounting <b>90</b></span>
+              <span class="chip">A+ · Organizational Behaviour <b>86</b></span>
+              <span class="chip">A · Digital Logic Design <b>80</b></span>
+              <span class="chip">A · Web Systems &amp; Technologies <b>80</b></span>
+              <span class="chip">A · Software Testing &amp; QE <b>80</b></span>
+              <span class="chip">A · SE Economics <b>80</b></span>
+            </div>
+            <p class="footnote">Four courses were repeated and improved (marked * on the transcript): Digital Logic
+              Design, Linear Algebra, Formal Methods in SE, and Enterprise Application Development.</p>
+          </div>
+
+          <p class="closing-line">From a Grade-D result card in 2008 to a Bachelor of Science in 2021. The rest of this
+            page walks the record backwards — ending where it all began, at the Nursery card of 2004.
+            <span class="src">Roll No. BSSEF17M53 · University of Sargodha</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ THE RECORD, PLOTTED ══════════════ -->
+    <section class="band">
+      <div class="section-head"><span class="eyebrow">Exhibit B</span></div>
+      <h2 class="section-title">The record, plotted</h2>
+      <p class="deck">Annual results as a percentage of total marks, 2006 – 2021. School, board and university marking
+        scales differ, so compare the shape, not just the heights. The 2009 point is a mid-term report — the only
+        surviving figure from that year.</p>
+
+      <div class="chart-card reveal">
+        <svg viewBox="0 0 1000 420" role="img"
+          aria-label="Line chart of annual result percentages from 2006 to 2021: 83.2, 80.3, 48.6, 69.0 (mid-term), 90.0, 61.9, 64.6, 76.6 and 68.8 percent.">
+          <!-- gridlines -->
+          <g stroke="#CFC8B4" stroke-width="1" stroke-dasharray="3 5">
+            <line x1="64" y1="60.4" x2="964" y2="60.4" />
+            <line x1="64" y1="121.1" x2="964" y2="121.1" />
+            <line x1="64" y1="181.8" x2="964" y2="181.8" />
+            <line x1="64" y1="242.5" x2="964" y2="242.5" />
+            <line x1="64" y1="303.3" x2="964" y2="303.3" />
+          </g>
+          <line x1="64" y1="364" x2="964" y2="364" stroke="#1E2A44" stroke-width="1.5" />
+          <!-- y labels -->
+          <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#4A5673">
+            <text x="52" y="64.4" text-anchor="end">90</text>
+            <text x="52" y="125.1" text-anchor="end">80</text>
+            <text x="52" y="185.8" text-anchor="end">70</text>
+            <text x="52" y="246.5" text-anchor="end">60</text>
+            <text x="52" y="307.3" text-anchor="end">50</text>
+            <text x="52" y="368" text-anchor="end">40</text>
+            <text x="16" y="30" font-size="11" fill="#4A5673">%</text>
+          </g>
+          <!-- area -->
+          <path
+            d="M64 101.7 L124 119.3 L184 311.8 L244 187.9 L424 60.4 L544 231 L604 214.6 L724 141.7 L964 189.4 L964 364 L64 364 Z"
+            fill="#1E2A44" opacity="0.055" />
+          <!-- trend line -->
+          <path id="trend-path"
+            d="M64 101.7 L124 119.3 L184 311.8 L244 187.9 L424 60.4 L544 231 L604 214.6 L724 141.7 L964 189.4"
+            fill="none" stroke="#1E2A44" stroke-width="2.75" stroke-linejoin="round" stroke-linecap="round" />
+          <!-- dots -->
+          <g>
+            <circle cx="64" cy="101.7" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+            <circle cx="124" cy="119.3" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+            <circle cx="184" cy="311.8" r="5.5" fill="#F5F2E9" stroke="#B3312D" stroke-width="2.5" />
+            <circle cx="244" cy="187.9" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5"
+              stroke-dasharray="2.5 2.5" />
+            <circle cx="424" cy="60.4" r="6" fill="#C9A64A" stroke="#8F6B1E" stroke-width="2.5" />
+            <circle cx="544" cy="231" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+            <circle cx="604" cy="214.6" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+            <circle cx="724" cy="141.7" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+            <circle cx="964" cy="189.4" r="5.5" fill="#F5F2E9" stroke="#1E2A44" stroke-width="2.5" />
+          </g>
+          <!-- value labels -->
+          <g font-family="IBM Plex Mono,monospace" font-size="12.5" font-weight="600" fill="#1E2A44">
+            <text x="64" y="84" text-anchor="middle">83.2</text>
+            <text x="124" y="143" text-anchor="middle">80.3</text>
+            <text x="184" y="336" text-anchor="middle" fill="#B3312D">48.6</text>
+            <text x="252" y="176" text-anchor="start">69.0</text>
+            <text x="424" y="42" text-anchor="middle" fill="#8F6B1E">90.0 · 1st position</text>
+            <text x="544" y="255" text-anchor="middle">61.9</text>
+            <text x="612" y="203" text-anchor="start">64.6</text>
+            <text x="724" y="124" text-anchor="middle">76.6</text>
+            <text x="964" y="172" text-anchor="end">68.8</text>
+          </g>
+          <!-- x labels -->
+          <g font-family="IBM Plex Mono,monospace" font-size="11.5" fill="#4A5673">
+            <text x="64" y="386" text-anchor="middle">2006</text>
+            <text x="124" y="386" text-anchor="middle">'07</text>
+            <text x="184" y="386" text-anchor="middle">'08</text>
+            <text x="244" y="386" text-anchor="middle">'09</text>
+            <text x="424" y="386" text-anchor="middle">2012</text>
+            <text x="544" y="386" text-anchor="middle">'14</text>
+            <text x="604" y="404" text-anchor="middle">'15</text>
+            <text x="724" y="386" text-anchor="middle">2017</text>
+            <text x="964" y="386" text-anchor="middle">2021</text>
+          </g>
+          <!-- era ticks -->
+          <g font-family="IBM Plex Mono,monospace" font-size="10" fill="#9a917c" letter-spacing="2">
+            <text x="64" y="416" text-anchor="start">SCHOOL EXAMS</text>
+            <text x="544" y="416" text-anchor="middle">BOARD EXAMS</text>
+            <text x="964" y="416" text-anchor="end">UNIVERSITY</text>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i class="dotkey"></i> Annual result</span>
+          <span><i class="dotkey hollow"></i> Mid-term (only record of 2009)</span>
+          <span><i class="dotkey red"></i> Re-exam year</span>
+          <span><i class="dotkey gold"></i> 1st position in class</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ THE LEDGER · NEWEST FIRST ══════════════ -->
+    <main class="band">
+      <div class="section-head"><span class="eyebrow">Exhibit C</span></div>
+      <h2 class="section-title">The ledger, newest first</h2>
+      <p class="deck">Every entry below is copied from a document you can download at the end of this page. The ledger
+        runs backwards through time: start at the 2017 college result and read down to the 2004 Nursery card at the
+        bottom. Where a scan is illegible, the figure is left out rather than guessed.</p>
+
+      <!-- ─── Part I · descending ─── -->
+      <div class="chapter"><span class="t">Part I · Taunsa, Punjab — college · 2017 – 2015</span></div>
+
+      <article class="entry reveal">
+        <div class="yearplate">2017</div>
+        <div>
+          <div class="entry-head">
+            <h3>F.Sc. Pre-Engineering · Intermediate</h3>
+            <span class="stamp gold">Grade A</span>
+          </div>
+          <p class="inst">Govt. College (Boys) Taunsa · Board of Intermediate &amp; Secondary Education, Dera Ghazi Khan
+          </p>
+          <div class="rows">
+            <div class="row"><span class="k">Aggregate</span><span class="leader"></span><span class="v">843/1100
+                <small>· 76.6%</small></span></div>
+            <div class="row"><span class="k">Declared</span><span class="leader"></span><span class="v">12 Sep
+                2017</span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Mathematics <b>186/200</b></span><span class="chip">Physics <b>173/200</b></span><span
+              class="chip">Chemistry <b>159/200</b></span><span class="chip">English <b>127/200</b></span>
+          </div>
+          <p class="footnote">The move from Balochistan to Punjab — and the best board result on file. Mathematics: 93%.
+            Two years later, admission to the University of Sargodha.</p>
+        </div>
+      </article>
+
+      <!-- ─── Part II · descending ─── -->
+      <div class="chapter"><span class="t">Part II · Pishin — first board exams &amp; new schools · 2015 – 2009</span>
+      </div>
+
+      <article class="entry reveal">
+        <div class="yearplate">2015</div>
+        <div>
+          <div class="entry-head">
+            <h3>Matriculation · SSC Parts I &amp; II</h3>
+            <span class="stamp navy">Grade B · "Very good"</span>
+          </div>
+          <p class="inst">Balochistan Board of Intermediate &amp; Secondary Education, Quetta · Sun Light English Public
+            High School, session 2014–15</p>
+          <div class="rows">
+            <div class="row"><span class="k">Aggregate</span><span class="leader"></span><span class="v">678/1050
+                <small>· 64.6%</small></span></div>
+            <div class="row"><span class="k">Declared</span><span class="leader"></span><span class="v">4 Jul
+                2015</span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Chemistry <b>118/150</b></span><span class="chip">Biology <b>105/150</b></span><span
+              class="chip">Mathematics <b>99/150</b></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2014</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class Nine · SSC Part-I, Science Group</h3>
+            <span class="stamp navy">All papers passed</span>
+          </div>
+          <p class="inst">Balochistan Board of Intermediate &amp; Secondary Education, Quetta · via Sun Light, Pishin
+          </p>
+          <div class="rows">
+            <div class="row"><span class="k">Board result</span><span class="leader"></span><span class="v">325/525
+                <small>· 61.9%</small></span></div>
+            <div class="row"><span class="k">Declared</span><span class="leader"></span><span class="v">18 Jun
+                2014</span></div>
+          </div>
+          <p class="footnote">First externally-marked examination — a different, stricter scale than school report
+            cards.</p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2012</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class Eight</h3>
+            <span class="stamp gold">1st position</span>
+          </div>
+          <p class="inst">Sun Light English Public School · Pishin · Annual Examination, 15 Dec 2012</p>
+          <div class="rows">
+            <div class="row"><span class="k">Annual exam</span><span class="leader"></span><span class="v">630/700
+                <small>· 90%</small></span></div>
+            <div class="row"><span class="k">Position in class</span><span class="leader"></span><span
+                class="v">1st</span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Computer <b>98</b></span><span class="chip">English <b>95</b></span><span
+              class="chip">Science <b>90</b></span><span class="chip">Maths <b>89</b></span><span class="chip">Islamic
+              St. <b>87</b></span><span class="chip">Urdu <b>86</b></span><span class="chip">Social St. <b>85</b></span>
+          </div>
+          <p class="footnote">Four years after the re-exam notice of 2008: top of the class, with the highest paper
+            being Computer — 98/100.</p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2010–11</div>
+        <div class="missing">
+          <div class="entry-head">
+            <h3>Classes Seven &amp; Five</h3>
+            <span class="stamp ghost">File missing</span>
+          </div>
+          <p class="inst">Sun Light English Public School · Pishin</p>
+          <p>The original result cards for Class 7 and Class 5 were lost. <b>Class 6 was skipped</b> — promoted directly
+            from Class 5 to Class 7 — so no Class 6 record ever existed. Attendance at Sun Light ran from Class 5
+            through matriculation.</p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2009</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class Four</h3>
+            <span class="stamp navy">Mid-term</span>
+          </div>
+          <p class="inst">Ibn-e-Seena's Little Angels High School · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Mid-term (3 Aug 2009)</span><span class="leader"></span><span
+                class="v">483/700 <small>· 69%</small></span></div>
+            <div class="row"><span class="k">Position</span><span class="leader"></span><span class="v">18th <small>of
+                  35</small></span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Maths <b>90</b></span><span class="chip">Urdu <b>89</b></span><span class="chip">Computer
+              <b>80</b></span>
+          </div>
+          <p class="footnote">Only the mid-term report survives from this year. Conduct: "Good". Attendance: "Nice".</p>
+        </div>
+      </article>
+
+      <!-- ─── Part III · descending ─── -->
+      <div class="chapter"><span class="t">Part III · Pishin, Balochistan — Taaleem Foundation years · 2008 –
+          2004</span></div>
+
+      <article class="entry reveal">
+        <div class="yearplate">2008</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class Three</h3>
+            <span class="stamp">Re-exam · Mar '09</span>
+          </div>
+          <p class="inst">TF Grammar School System (Taaleem Foundation) · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Final exam</span><span class="leader"></span><span class="v">316/650
+                <small>· 48.6%</small></span></div>
+            <div class="row"><span class="k">Position</span><span class="leader"></span><span class="v">21st <small>of
+                  31</small></span></div>
+            <div class="row"><span class="k">Grade</span><span class="leader"></span><span class="v">D</span></div>
+          </div>
+          <p class="footnote">The hardest year in the file — recorded here with the same care as the best one.
+            Everything above it on this page is the climb that followed.</p>
+          <p class="remark">"Pay serious attention to S.St &amp; Science."<span class="who">Principal's remarks,
+              mid-term card</span></p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2007</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class Two</h3>
+            <span class="stamp navy">Passed</span>
+          </div>
+          <p class="inst">TF Grammar School System (Taaleem Foundation) · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Final exam</span><span class="leader"></span><span class="v">522/650
+                <small>· 80.3%</small></span></div>
+            <div class="row"><span class="k">Position</span><span class="leader"></span><span class="v">14th <small>of
+                  37</small></span></div>
+            <div class="row"><span class="k">Grade</span><span class="leader"></span><span class="v">A</span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Mathematics <b>94.5</b></span><span class="chip">Science <b>88</b></span><span
+              class="chip">English <b>86.5</b></span>
+          </div>
+          <p class="remark">"Good. More hard work is needed."<span class="who">Principal's remarks, final result
+              card</span></p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2006</div>
+        <div>
+          <div class="entry-head">
+            <h3>Class One</h3>
+            <span class="stamp navy">Passed</span>
+          </div>
+          <p class="inst">TF Grammar School System (Taaleem Foundation) · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Final exam</span><span class="leader"></span><span class="v">499/600
+                <small>· 83.2%</small></span></div>
+            <div class="row"><span class="k">Position</span><span class="leader"></span><span class="v">8th <small>of
+                  22</small></span></div>
+            <div class="row"><span class="k">Grade</span><span class="leader"></span><span class="v">A</span></div>
+            <div class="row"><span class="k">Computer certificate</span><span class="leader"></span><span
+                class="v">43/50 <small>· A+ · 6th</small></span></div>
+          </div>
+          <div class="papers">
+            <span class="chip">Keys Skill</span><span class="chip">WordPad</span><span class="chip">Paint</span><span
+              class="chip">NotePad</span><span class="chip">Calculator</span><span class="chip">Kids Collection</span>
+          </div>
+          <p class="footnote">First computing credential on file — a Certificate of Completion, fifteen years before the
+            software engineering degree at the top of this page.</p>
+          <p class="remark">"Very good — keep up the hard work."<span class="who">Principal's remarks, final result
+              card</span></p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2005</div>
+        <div>
+          <div class="entry-head">
+            <h3>Prep</h3>
+            <span class="stamp navy">Passed</span>
+          </div>
+          <p class="inst">TF Grammar School System (Taaleem Foundation) · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Final exam</span><span class="leader"></span><span class="v">379/400
+                <small>· 94.8%</small></span></div>
+            <div class="row"><span class="k">Final position</span><span class="leader"></span><span class="v">4th</span>
+            </div>
+            <div class="row"><span class="k">Mid-term</span><span class="leader"></span><span class="v">389/400 <small>·
+                  97% · 3rd of 21</small></span></div>
+            <div class="row"><span class="k">Grade</span><span class="leader"></span><span class="v">A+</span></div>
+          </div>
+          <p class="remark">"Superb performance! Keep up the hard work." &nbsp;…&nbsp; "Excellent — keep it up."<span
+              class="who">Principal's remarks</span></p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="yearplate">2004</div>
+        <div>
+          <div class="entry-head">
+            <h3>Nursery</h3>
+            <span class="stamp navy">Passed</span>
+          </div>
+          <p class="inst">TF Grammar School System (Taaleem Foundation) · Pishin</p>
+          <div class="rows">
+            <div class="row"><span class="k">Grade</span><span class="leader"></span><span class="v">A+</span></div>
+            <div class="row"><span class="k">Final position</span><span class="leader"></span><span class="v">12th
+                <small>of 26</small></span></div>
+          </div>
+          <p class="remark">"Brilliant performance." &nbsp;…&nbsp; "Good work — keep it up."<span
+              class="who">Principal's remarks, mid-term &amp; final result cards</span></p>
+          <p class="footnote">Where it all began — the first result card in the archive, 2004.</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- ══════════════ THE VAULT ══════════════ -->
+    <section class="band">
+      <div class="vault reveal">
+        <span class="eyebrow">The archive</span>
+        <h2>The original documents, exactly as scanned</h2>
+        <p>Every result card and certificate quoted on this page — all 29 pages, from the university transcript back to
+          the Nursery card — lives in one separate file: Education_history.pdf. Nothing on this page replaces the
+          originals; it only summarizes them.</p>
+        <button class="btn" type="button" data-download>Download education original documents</button>
+        <span class="cta-note">Education_history.pdf · 29 pages · 21.3&nbsp;MB</span>
+      </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>
+      <p>Every figure on this page is transcribed from the original certificates contained in the download above. Where
+        a scan is illegible, the figure is omitted rather than guessed. Records for Classes 5 and 7 were lost; Class 6
+        was skipped by direct promotion. School, board and university marks are graded on different scales and are shown
+        as issued.</p>
+      <p class="sig">Record of Kalim Ullah, s/o Mati Ullah · Compiled 21 July 2026</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════ WHERE THE PDF DOWNLOADS FROM ═══════════
+     Both "Download education original documents" buttons fetch the file
+     from the address in PDF_URL below. The PDF is NOT stored inside this
+     page — it is stored wherever you decide.
+
+     DEFAULT — same folder: keep Education_history.pdf next to this HTML
+     file (on your computer or your web host) and it works as-is.
+
+     STORED SOMEWHERE ELSE — replace the value with your direct link:
+       Google Drive : https://drive.google.com/uc?export=download&id=FILE_ID
+https://drive.google.com/uc?export=download&id=1mf3oFRedM2f-2dRumHRiOdLOo0BrfhiS
+
+
+       (FILE_ID is the long code in the file's share link)
+       Dropbox      : your shared link, with the ending changed to  ?dl=1
+       GitHub       : the file's "Raw" URL
+       Your website : https://your-site.com/files/Education_history.pdf
+     ═══════════════════════════════════════════════════════ -->
+  <script>
+    var PDF_URL = "https://drive.google.com/uc?export=download&id=1mf3oFRedM2f-2dRumHRiOdLOo0BrfhiS";
+  </script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* ── scroll reveals ── */
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var revealEls = document.querySelectorAll(".reveal");
+      if (!reduced && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.18 });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("in"); });
+      }
+
+      /* ── draw the trend line when visible ── */
+      var path = document.getElementById("trend-path");
+      if (path && !reduced && "IntersectionObserver" in window) {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+        var pio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              requestAnimationFrame(function () { path.style.strokeDashoffset = "0"; });
+              pio.disconnect();
+            }
+          });
+        }, { threshold: 0.35 });
+        pio.observe(path);
+      }
+
+      /* ── download the original PDF from wherever PDF_URL points ── */
+      var external = /^https?:\/\//i.test(PDF_URL);
+      document.querySelectorAll("[data-download]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var a = document.createElement("a");
+          a.href = PDF_URL;
+          a.download = "Education_history.pdf";
+          a.rel = "noopener";
+          if (external) { a.target = "_blank"; }
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>

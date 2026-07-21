@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism_light/home_screen/glass_card.dart';
 import 'package:glassmorphism_light/home_screen/light_bulb_painter.dart';
+import 'package:glassmorphism_light/home_screen/detail_page.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Responsive breakpoints
@@ -35,7 +36,7 @@ Widget buildGridContent(double baseGlow, BuildContext context) {
           horizontal: device == DeviceType.mobile ? 16.0 : 24.0,
           vertical: 16.0,
         ),
-        child: _buildResponsiveCards(baseGlow, device),
+        child: _buildResponsiveCards(baseGlow, device, context),
       );
     },
   );
@@ -44,15 +45,40 @@ Widget buildGridContent(double baseGlow, BuildContext context) {
 // ─────────────────────────────────────────────────────────────────────────────
 // Layout Builder
 // ─────────────────────────────────────────────────────────────────────────────
-Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
+Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext context) {
   final isMobile = device == DeviceType.mobile;
 
-  final hero = _buildHeroCard(
+  final heroCardWidget = _buildHeroCard(
     _getAttenuatedGlow(baseGlow, 0.0),
     isMobile: isMobile,
   );
 
-  final statLeft = _buildStatCard(
+  final hero = MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 600),
+            pageBuilder: (_, __, ___) => DetailPage(
+              heroTag: 'hero_profile',
+              child: heroCardWidget,
+            ),
+          ),
+        );
+      },
+      child: Hero(
+        tag: 'hero_profile',
+        child: Material(
+          type: MaterialType.transparency,
+          child: heroCardWidget,
+        ),
+      ),
+    ),
+  );
+
+  final statLeftWidget = _buildStatCard(
     _getAttenuatedGlow(baseGlow, 0.4),
     icon: FaIcon(
       FontAwesomeIcons.bookOpen,
@@ -75,7 +101,32 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
     ),
   );
 
-  final statRight = _buildStatCard(
+  final statLeft = MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 600),
+            pageBuilder: (_, __, ___) => DetailPage(
+              heroTag: 'hero_education',
+              child: statLeftWidget,
+            ),
+          ),
+        );
+      },
+      child: Hero(
+        tag: 'hero_education',
+        child: Material(
+          type: MaterialType.transparency,
+          child: statLeftWidget,
+        ),
+      ),
+    ),
+  );
+
+  final statRightWidget = _buildStatCard(
     _getAttenuatedGlow(baseGlow, 0.4),
     icon: Icon(
       Icons.work,
@@ -95,6 +146,31 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device) {
         (title: 'Fiverr (Flutter)', date: 'Mar 2022 - Jul 2024'),
         (title: 'Upwork (FlutterFlow)', date: 'Mar 2024 - Present'),
       ],
+    ),
+  );
+
+  final statRight = MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 600),
+            pageBuilder: (_, __, ___) => DetailPage(
+              heroTag: 'hero_work',
+              child: statRightWidget,
+            ),
+          ),
+        );
+      },
+      child: Hero(
+        tag: 'hero_work',
+        child: Material(
+          type: MaterialType.transparency,
+          child: statRightWidget,
+        ),
+      ),
     ),
   );
 

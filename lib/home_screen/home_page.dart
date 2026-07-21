@@ -7,6 +7,8 @@ import 'glass_card.dart';
 import 'floating_particles.dart';
 import 'light_toggle_button.dart';
 import 'project_image_with_bulb.dart';
+import 'detail_page.dart';
+import 'shared_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,8 +21,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   bool _isLightOn = false;
   late AnimationController _lightController;
   late AnimationController _flickerController;
-  late Animation<double> _lightAnimation;
-  late Animation<double> _flickerAnimation;
+  late final Animation<double> _lightAnimation;
+  late final Animation<double> _flickerAnimation;
 
   // Background gradient animation
   late AnimationController _bgController;
@@ -32,6 +34,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
+    _isLightOn = globalLightStateNotifier.value;
+    globalLightStateNotifier.addListener(_onGlobalLightStateChanged);
 
     _lightController = AnimationController(
       vsync: this,
@@ -71,8 +76,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     _glowNotifier.value = _lightAnimation.value * _flickerAnimation.value;
   }
 
+  void _onGlobalLightStateChanged() {
+    if (globalLightStateNotifier.value != _isLightOn && mounted) {
+      setState(() => _isLightOn = globalLightStateNotifier.value);
+      if (_isLightOn) {
+        _lightController.forward();
+        _startFlicker();
+      } else {
+        _lightController.reverse();
+        _flickerController.stop();
+      }
+    }
+  }
+
   @override
   void dispose() {
+    globalLightStateNotifier.removeListener(_onGlobalLightStateChanged);
     _lightController.dispose();
     _flickerController.dispose();
     _bgController.dispose();
@@ -82,16 +101,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void _toggleLight() {
-    setState(() => _isLightOn = !_isLightOn);
-
-    if (_isLightOn) {
-      _lightController.forward();
-      // Start flicker loop
-      _startFlicker();
-    } else {
-      _lightController.reverse();
-      _flickerController.stop();
-    }
+    globalLightStateNotifier.value = !globalLightStateNotifier.value;
   }
 
   void _startFlicker() async {
@@ -273,11 +283,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       children: [
         const SizedBox(height: 200), // Space for bulb
         // === HERO SECTION ===
-        Positioned.fill(
-          child: ValueListenableBuilder<double>(
-            valueListenable: _glowNotifier,
-            builder: (context, glow, _) => buildGridContent(glow, context),
-          ),
+        ValueListenableBuilder<double>(
+          valueListenable: _glowNotifier,
+          builder: (context, glow, _) => buildGridContent(glow, context),
         ),
         const SizedBox(height: 40),
         ValueListenableBuilder<double>(
@@ -687,13 +695,37 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 spacing: spacing,
                 runSpacing: spacing,
                 children: projects.map((project) {
+                  final cardWidget = _buildProjectCard(
+                    name: project.name,
+                    imagePath: project.image,
+                    glow: glow,
+                    lightPos: lightPos,
+                  );
                   return SizedBox(
                     width: cardWidth,
-                    child: _buildProjectCard(
-                      name: project.name,
-                      imagePath: project.image,
-                      glow: glow,
-                      lightPos: lightPos,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration: const Duration(milliseconds: 600),
+                              pageBuilder: (_, __, ___) => DetailPage(
+                                heroTag: 'hero_project_${project.name}',
+                                child: cardWidget,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Hero(
+                          tag: 'hero_project_${project.name}',
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: cardWidget,
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 }).toList(),
