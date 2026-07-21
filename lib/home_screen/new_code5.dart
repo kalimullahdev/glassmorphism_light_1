@@ -45,7 +45,11 @@ Widget buildGridContent(double baseGlow, BuildContext context) {
 // ─────────────────────────────────────────────────────────────────────────────
 // Layout Builder
 // ─────────────────────────────────────────────────────────────────────────────
-Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext context) {
+Widget _buildResponsiveCards(
+  double baseGlow,
+  DeviceType device,
+  BuildContext context,
+) {
   final isMobile = device == DeviceType.mobile;
 
   final heroCardWidget = _buildHeroCard(
@@ -61,19 +65,14 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext co
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) => DetailPage(
-              heroTag: 'hero_profile',
-              child: heroCardWidget,
-            ),
+            pageBuilder: (_, __, ___) =>
+                DetailPage(heroTag: 'hero_profile', child: heroCardWidget),
           ),
         );
       },
       child: Hero(
         tag: 'hero_profile',
-        child: Material(
-          type: MaterialType.transparency,
-          child: heroCardWidget,
-        ),
+        child: Material(type: MaterialType.transparency, child: heroCardWidget),
       ),
     ),
   );
@@ -94,7 +93,7 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext co
     details: _StatList(
       glow: baseGlow,
       items: const [
-        (title: 'Start to Matric', date: '2003-2015'),
+        (title: 'Start to Matric', date: '2004-2015'),
         (title: 'FSc', date: '2015-2017'),
         (title: 'BSSE', date: '2017-2021'),
       ],
@@ -109,19 +108,14 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext co
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) => DetailPage(
-              heroTag: 'hero_education',
-              child: statLeftWidget,
-            ),
+            pageBuilder: (_, __, ___) =>
+                DetailPage(heroTag: 'hero_education', child: statLeftWidget),
           ),
         );
       },
       child: Hero(
         tag: 'hero_education',
-        child: Material(
-          type: MaterialType.transparency,
-          child: statLeftWidget,
-        ),
+        child: Material(type: MaterialType.transparency, child: statLeftWidget),
       ),
     ),
   );
@@ -157,10 +151,8 @@ Widget _buildResponsiveCards(double baseGlow, DeviceType device, BuildContext co
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) => DetailPage(
-              heroTag: 'hero_work',
-              child: statRightWidget,
-            ),
+            pageBuilder: (_, __, ___) =>
+                DetailPage(heroTag: 'hero_work', child: statRightWidget),
           ),
         );
       },

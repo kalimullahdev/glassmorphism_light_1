@@ -156,14 +156,14 @@ class _DetailPageState extends State<DetailPage> with SingleTickerProviderStateM
                       colors: [
                         // Center color
                         Color.lerp(
-                          Colors.black.withOpacity(0.95), // OFF state: very dark
+                          Colors.black.withOpacity(0.85), // OFF state: uniformly dark
                           Colors.transparent, // ON state: fully illuminated center
                           lightValue,
                         )!,
                         // Edge color
                         Color.lerp(
-                          Colors.black.withOpacity(0.98), // OFF state: almost pitch black
-                          Colors.black.withOpacity(0.5), // ON state: cinematic shadow
+                          Colors.black.withOpacity(0.85), // OFF state: uniformly dark matches center
+                          Colors.black.withOpacity(0.65), // ON state: cinematic edge shadow
                           lightValue,
                         )!,
                       ],
@@ -243,56 +243,65 @@ class BulbPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final double centerX = size.width / 2;
-    // Shift everything up slightly to make the bulb smaller and higher
+    
+    canvas.save();
+    // Scale everything down to 80% to make it smaller while maintaining the top anchor
+    canvas.translate(centerX, 0);
+    canvas.scale(0.8, 0.8);
+    canvas.translate(-centerX, 0);
+
     final double topY = 0;
     final double bulbCenterY = 120;
     
-    // 1. Hanging wire
+    // 1. Hanging wire (with metallic gradient for realism)
     final wirePaint = Paint()
-      ..color = Colors.black87
-      ..strokeWidth = 2.5
+      ..shader = ui.Gradient.linear(
+        Offset(centerX - 1.5, 0),
+        Offset(centerX + 1.5, 0),
+        [Colors.black87, Colors.grey.shade500, Colors.black87],
+        [0.0, 0.5, 1.0],
+      )
+      ..strokeWidth = 3.0
       ..style = PaintingStyle.stroke;
     canvas.drawLine(Offset(centerX, topY), Offset(centerX, bulbCenterY - 45), wirePaint);
     
-    // 2. Metallic socket
+    // 2. Premium Metallic socket
     final socketRect = Rect.fromCenter(center: Offset(centerX, bulbCenterY - 35), width: 18, height: 24);
     final socketPaint = Paint()
       ..shader = ui.Gradient.linear(
         Offset(centerX - 9, 0),
         Offset(centerX + 9, 0),
         [
-          const Color(0xFF4A4A4A), // Dark left
-          const Color(0xFF9E9E9E), // Light middle
-          const Color(0xFF333333), // Dark right
+          const Color(0xFF333333),
+          const Color(0xFFB0B0B0), // Brighter reflection
+          const Color(0xFF222222),
         ],
-        [0.0, 0.4, 1.0],
+        [0.0, 0.35, 1.0],
       );
-    // Draw socket
     canvas.drawRRect(RRect.fromRectAndRadius(socketRect, const Radius.circular(2)), socketPaint);
-    // Add some horizontal ridges to socket
-    final ridgePaint = Paint()
-      ..color = Colors.black.withOpacity(0.4)
-      ..strokeWidth = 1.0;
-    canvas.drawLine(Offset(centerX - 9, bulbCenterY - 42), Offset(centerX + 9, bulbCenterY - 42), ridgePaint);
-    canvas.drawLine(Offset(centerX - 9, bulbCenterY - 38), Offset(centerX + 9, bulbCenterY - 38), ridgePaint);
-    canvas.drawLine(Offset(centerX - 9, bulbCenterY - 34), Offset(centerX + 9, bulbCenterY - 34), ridgePaint);
+    
+    // Ridges with highlights for realism
+    final ridgeShadow = Paint()..color = Colors.black.withOpacity(0.7)..strokeWidth = 1.0;
+    final ridgeHighlight = Paint()..color = Colors.white.withOpacity(0.4)..strokeWidth = 1.0;
+    for (int i = 0; i < 3; i++) {
+      double ry = bulbCenterY - 42 + (i * 4);
+      canvas.drawLine(Offset(centerX - 9, ry), Offset(centerX + 9, ry), ridgeShadow);
+      canvas.drawLine(Offset(centerX - 9, ry + 1), Offset(centerX + 9, ry + 1), ridgeHighlight);
+    }
     
     // 3. Glass bulb shape
     final Path bulbPath = Path();
     bulbPath.moveTo(centerX - 9, bulbCenterY - 23);
-    // Expand to round bulb
     bulbPath.cubicTo(
       centerX - 12, bulbCenterY - 15, 
       centerX - 35, bulbCenterY - 5, 
       centerX - 35, bulbCenterY + 15
     );
-    // Bottom round part
     bulbPath.arcToPoint(
       Offset(centerX + 35, bulbCenterY + 15),
       radius: const Radius.circular(35),
       clockwise: false,
     );
-    // Contract to socket
     bulbPath.cubicTo(
       centerX + 35, bulbCenterY - 5, 
       centerX + 12, bulbCenterY - 15, 
@@ -300,73 +309,92 @@ class BulbPainter extends CustomPainter {
     );
     bulbPath.close();
 
-    // 4. Glow Behind Bulb (When ON)
+    // 4. Premium Glow (When ON)
     if (lightIntensity > 0) {
+      // Massive soft outer halo
+      final haloPaint = Paint()
+        ..color = const Color(0xFFFFD54F).withOpacity(0.15 * lightIntensity)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 120 * lightIntensity);
+      canvas.drawCircle(Offset(centerX, bulbCenterY + 15), 140, haloPaint);
+
+      // Inner bright intense glow
       final glowOuterPaint = Paint()
-        ..color = const Color(0xFFFFD54F).withOpacity(0.25 * lightIntensity)
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 80 * lightIntensity);
-      canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 90, glowOuterPaint);
+        ..color = const Color(0xFFFFE082).withOpacity(0.4 * lightIntensity)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 60 * lightIntensity);
+      canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 80, glowOuterPaint);
       
+      // Core white-hot glow
       final glowInnerPaint = Paint()
-        ..color = const Color(0xFFFFECB3).withOpacity(0.4 * lightIntensity)
-        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 30 * lightIntensity);
-      canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 40, glowInnerPaint);
+        ..color = const Color(0xFFFFFFFF).withOpacity(0.8 * lightIntensity)
+        ..maskFilter = MaskFilter.blur(BlurStyle.normal, 20 * lightIntensity);
+      canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 30, glowInnerPaint);
     }
 
     // 5. Glass material fill
     final glassPaint = Paint()
       ..color = Color.lerp(
-        Colors.white.withOpacity(0.15), // OFF state glass
-        const Color(0xFFFFF9C4).withOpacity(0.4), // ON state warm glass
+        Colors.white.withOpacity(0.1), // Clearer glass when OFF
+        Colors.white.withOpacity(0.5), // Glowing hot glass when ON
         lightIntensity,
       )!
       ..style = PaintingStyle.fill;
     canvas.drawPath(bulbPath, glassPaint);
 
-    // 6. Filament (Inside)
+    // 6. Realistic Filament Structure
     final Path filamentPath = Path();
     filamentPath.moveTo(centerX - 4, bulbCenterY - 23); // start at socket
-    filamentPath.lineTo(centerX - 4, bulbCenterY - 5);  // down
-    filamentPath.lineTo(centerX - 8, bulbCenterY + 5);  // left slant
-    filamentPath.lineTo(centerX + 8, bulbCenterY + 5);  // across bottom
-    filamentPath.lineTo(centerX + 4, bulbCenterY - 5);  // right slant up
+    filamentPath.lineTo(centerX - 4, bulbCenterY - 2);  // down
+    filamentPath.lineTo(centerX - 10, bulbCenterY + 8);  // left slant
+    filamentPath.lineTo(centerX + 10, bulbCenterY + 8);  // across bottom
+    filamentPath.lineTo(centerX + 4, bulbCenterY - 2);  // right slant up
     filamentPath.lineTo(centerX + 4, bulbCenterY - 23); // back to socket
 
     final filamentBasePaint = Paint()
-      ..color = Color.lerp(Colors.orange[900], Colors.yellow[100], lightIntensity)!
+      ..color = Color.lerp(Colors.orange[900], const Color(0xFFFFF176), lightIntensity)!
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
     canvas.drawPath(filamentPath, filamentBasePaint);
 
-    // Glowing coil at bottom of filament
+    // Glowing coil at bottom
     final coilPaint = Paint()
-      ..color = Color.lerp(Colors.red[800], Colors.white, lightIntensity)!
-      ..strokeWidth = 2.0
+      ..color = Color.lerp(Colors.red[900], Colors.white, lightIntensity)!
+      ..strokeWidth = 2.5
+      ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
-      ..maskFilter = lightIntensity > 0 ? MaskFilter.blur(BlurStyle.solid, 4 * lightIntensity) : null;
-    canvas.drawLine(Offset(centerX - 8, bulbCenterY + 5), Offset(centerX + 8, bulbCenterY + 5), coilPaint);
+      ..maskFilter = lightIntensity > 0 ? MaskFilter.blur(BlurStyle.solid, 6 * lightIntensity) : null;
+    canvas.drawLine(Offset(centerX - 10, bulbCenterY + 8), Offset(centerX + 10, bulbCenterY + 8), coilPaint);
 
-    // 7. Glass Specular Highlight (Reflection)
+    // 7. Premium Glass Specular Highlights (Reflection)
+    // Left side curve reflection
     final highlightPath = Path();
-    highlightPath.moveTo(centerX - 20, bulbCenterY + 5);
+    highlightPath.moveTo(centerX - 24, bulbCenterY + 2);
     highlightPath.arcToPoint(
-      Offset(centerX - 10, bulbCenterY + 30),
-      radius: const Radius.circular(20),
+      Offset(centerX - 12, bulbCenterY + 35),
+      radius: const Radius.circular(30),
       clockwise: false,
     );
     final highlightPaint = Paint()
-      ..color = Colors.white.withOpacity(0.6 - (0.4 * lightIntensity)) // Less visible when lit
-      ..strokeWidth = 2.0
+      ..color = Colors.white.withOpacity(0.8 - (0.3 * lightIntensity))
+      ..strokeWidth = 3.0
       ..style = PaintingStyle.stroke
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.0)
       ..strokeCap = StrokeCap.round;
     canvas.drawPath(highlightPath, highlightPaint);
 
-    // 8. Bulb border
+    // Small dot reflection on the right
+    final dotHighlightPaint = Paint()
+      ..color = Colors.white.withOpacity(0.7 - (0.2 * lightIntensity))
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.5);
+    canvas.drawCircle(Offset(centerX + 18, bulbCenterY + 22), 2.5, dotHighlightPaint);
+
+    // 8. Thin rim lighting border
     final glassBorder = Paint()
-      ..color = Colors.white.withOpacity(0.4)
+      ..color = Colors.white.withOpacity(0.5)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
     canvas.drawPath(bulbPath, glassBorder);
+
+    canvas.restore();
   }
 
   @override
