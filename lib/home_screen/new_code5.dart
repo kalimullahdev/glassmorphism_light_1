@@ -136,7 +136,7 @@ Widget _buildResponsiveCards(
     details: _StatList(
       glow: baseGlow,
       items: const [
-        (title: 'Internship (Flutter)', date: 'Sep 2021 - Mar 2022'),
+        (title: 'Internship (Flutter)', date: 'Nov 2021 - Feb 2022'),
         (title: 'Fiverr (Flutter)', date: 'Mar 2022 - Jul 2024'),
         (title: 'Upwork (FlutterFlow)', date: 'Mar 2024 - Present'),
       ],
