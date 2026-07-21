@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:glassmorphism_light/glass_card.dart';
-import 'package:glassmorphism_light/light_bulb_painter.dart';
+import 'package:glassmorphism_light/home_screen/glass_card.dart';
+import 'package:glassmorphism_light/home_screen/light_bulb_painter.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Responsive breakpoints
