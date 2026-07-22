@@ -151,12 +151,11 @@ Widget _buildResponsiveCards(
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) =>
-                DetailPage(
-                  heroTag: 'hero_work',
-                  child: statRightWidget,
-                  htmlAssetPath: 'assets/record_of_work.html',
-                ),
+            pageBuilder: (_, __, ___) => DetailPage(
+              heroTag: 'hero_work',
+              child: statRightWidget,
+              htmlAssetPath: 'assets/record_of_work.html',
+            ),
           ),
         );
       },
@@ -438,9 +437,9 @@ class ProfileHeader extends StatelessWidget {
 
   static const String _headline = 'Kalim ullah (Software Engineer)';
   static const String _body =
-      'I build innovative, high-performance mobile and web applications powered '
+      'I build fully functional mobile and web applications powered '
       'by deep expertise in FlutterFlow, Flutter, Dart, Firebase, Supabase, Rest API, AI and Payment Integration. This foundation lets '
-      'me solve complex development challenges with clean, reliable, '
+      'me solve complex development challenges with clean, reliable, scalable, '
       'production-ready results.';
 
   @override
