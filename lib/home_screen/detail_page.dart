@@ -169,8 +169,8 @@ class _DetailPageState extends State<DetailPage>
                       colors: [
                         // Center color
                         Color.lerp(
-                          Colors.black.withOpacity(
-                            0.85,
+                          Colors.black.withValues(
+                            alpha: 0.85,
                           ), // OFF state: uniformly dark
                           Colors
                               .transparent, // ON state: fully illuminated center
@@ -178,11 +178,11 @@ class _DetailPageState extends State<DetailPage>
                         )!,
                         // Edge color
                         Color.lerp(
-                          Colors.black.withOpacity(
-                            0.85,
+                          Colors.black.withValues(
+                            alpha: 0.85,
                           ), // OFF state: uniformly dark matches center
-                          Colors.black.withOpacity(
-                            0.65,
+                          Colors.black.withValues(
+                            alpha: 0.65,
                           ), // ON state: cinematic edge shadow
                           lightValue,
                         )!,
@@ -320,10 +320,10 @@ class BulbPainter extends CustomPainter {
 
     // Ridges with highlights for realism
     final ridgeShadow = Paint()
-      ..color = Colors.black.withOpacity(0.7)
+      ..color = Colors.black.withValues(alpha: 0.7)
       ..strokeWidth = 1.0;
     final ridgeHighlight = Paint()
-      ..color = Colors.white.withOpacity(0.4)
+      ..color = Colors.white.withValues(alpha: 0.4)
       ..strokeWidth = 1.0;
     for (int i = 0; i < 3; i++) {
       double ry = bulbCenterY - 42 + (i * 4);
@@ -369,19 +369,19 @@ class BulbPainter extends CustomPainter {
     if (lightIntensity > 0) {
       // Massive soft outer halo
       final haloPaint = Paint()
-        ..color = const Color(0xFFFFD54F).withOpacity(0.15 * lightIntensity)
+        ..color = const Color(0xFFFFD54F).withValues(alpha: 0.15 * lightIntensity)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 120 * lightIntensity);
       canvas.drawCircle(Offset(centerX, bulbCenterY + 15), 140, haloPaint);
 
       // Inner bright intense glow
       final glowOuterPaint = Paint()
-        ..color = const Color(0xFFFFE082).withOpacity(0.4 * lightIntensity)
+        ..color = const Color(0xFFFFE082).withValues(alpha: 0.4 * lightIntensity)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 60 * lightIntensity);
       canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 80, glowOuterPaint);
 
       // Core white-hot glow
       final glowInnerPaint = Paint()
-        ..color = const Color(0xFFFFFFFF).withOpacity(0.8 * lightIntensity)
+        ..color = const Color(0xFFFFFFFF).withValues(alpha: 0.8 * lightIntensity)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, 20 * lightIntensity);
       canvas.drawCircle(Offset(centerX, bulbCenterY + 10), 30, glowInnerPaint);
     }
@@ -389,8 +389,8 @@ class BulbPainter extends CustomPainter {
     // 5. Glass material fill
     final glassPaint = Paint()
       ..color = Color.lerp(
-        Colors.white.withOpacity(0.1), // Clearer glass when OFF
-        Colors.white.withOpacity(0.5), // Glowing hot glass when ON
+        Colors.white.withValues(alpha: 0.1), // Clearer glass when OFF
+        Colors.white.withValues(alpha: 0.5), // Glowing hot glass when ON
         lightIntensity,
       )!
       ..style = PaintingStyle.fill;
@@ -440,7 +440,7 @@ class BulbPainter extends CustomPainter {
       clockwise: false,
     );
     final highlightPaint = Paint()
-      ..color = Colors.white.withOpacity(0.8 - (0.3 * lightIntensity))
+      ..color = Colors.white.withValues(alpha: 0.8 - (0.3 * lightIntensity))
       ..strokeWidth = 3.0
       ..style = PaintingStyle.stroke
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.0)
@@ -449,7 +449,7 @@ class BulbPainter extends CustomPainter {
 
     // Small dot reflection on the right
     final dotHighlightPaint = Paint()
-      ..color = Colors.white.withOpacity(0.7 - (0.2 * lightIntensity))
+      ..color = Colors.white.withValues(alpha: 0.7 - (0.2 * lightIntensity))
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.5);
     canvas.drawCircle(
       Offset(centerX + 18, bulbCenterY + 22),
@@ -459,7 +459,7 @@ class BulbPainter extends CustomPainter {
 
     // 8. Thin rim lighting border
     final glassBorder = Paint()
-      ..color = Colors.white.withOpacity(0.5)
+      ..color = Colors.white.withValues(alpha: 0.5)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
     canvas.drawPath(bulbPath, glassBorder);

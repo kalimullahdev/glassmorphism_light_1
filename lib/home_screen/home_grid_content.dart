@@ -28,9 +28,6 @@ Widget buildGridContent(double baseGlow, BuildContext context) {
     builder: (context, constraints) {
       final device = _deviceTypeFor(constraints.maxWidth);
 
-      // FIX: Removed Center and ConstrainedBox(1400) limits.
-      // The row will now take the full available width, aligning perfectly
-      // with the wide "ILLUMINATED GLASSMORPHISM" widget below it.
       return Padding(
         padding: EdgeInsets.symmetric(
           horizontal: device == DeviceType.mobile ? 16.0 : 24.0,
@@ -65,7 +62,7 @@ Widget _buildResponsiveCards(
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) =>
+            pageBuilder: (_, _, _) =>
                 DetailPage(heroTag: 'hero_profile', child: heroCardWidget),
           ),
         );
@@ -108,7 +105,7 @@ Widget _buildResponsiveCards(
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) =>
+            pageBuilder: (_, _, _) =>
                 DetailPage(heroTag: 'hero_education', child: statLeftWidget),
           ),
         );
@@ -151,10 +148,10 @@ Widget _buildResponsiveCards(
           context,
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, __, ___) => DetailPage(
+            pageBuilder: (_, _, _) => DetailPage(
               heroTag: 'hero_work',
-              child: statRightWidget,
               htmlAssetPath: 'assets/record_of_work.html',
+              child: statRightWidget,
             ),
           ),
         );
@@ -175,7 +172,6 @@ Widget _buildResponsiveCards(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // FIX: Updated ratio to 7:10:7 giving side cards more space for text
             Expanded(flex: 7, child: statLeft),
             Expanded(flex: 10, child: hero),
             Expanded(flex: 7, child: statRight),
@@ -188,7 +184,7 @@ Widget _buildResponsiveCards(
         mainAxisSize: MainAxisSize.min,
         children: [
           hero,
-          const SizedBox(height: 8), // Decreased gap
+          const SizedBox(height: 8),
           IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -204,7 +200,6 @@ Widget _buildResponsiveCards(
     case DeviceType.mobile:
       return Column(
         mainAxisSize: MainAxisSize.min,
-        // FIX: Mobile should stack everything vertically so each card has maximum width
         children: [
           hero,
           const SizedBox(height: 16),
@@ -248,6 +243,7 @@ class _AccentBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lit = glow > 0.1;
+
     return Container(
       width: 60,
       height: 3,
@@ -335,7 +331,6 @@ Widget _buildStatCard(
   );
 }
 
-/// FIX: Consolidated duplicate classes into one clean generic list builder using Dart 3 records
 class _StatList extends StatelessWidget {
   const _StatList({required this.glow, required this.items});
 
@@ -376,7 +371,6 @@ class StatsSubText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      // FIX: CrossAxisAlignment.start ensures texts align cleanly to the top if the dates wrap
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
@@ -396,16 +390,14 @@ class StatsSubText extends StatelessWidget {
         ),
         const SizedBox(width: 12),
         Expanded(
-          flex: 3, // Gives dates slightly more width priority
+          flex: 3,
           child: Text(
             timePeriod,
             textAlign: TextAlign.right,
-            // FIX: Removed maxLines and ellipsis so that if the screen gets tight,
-            // the text will automatically wrap to a second line and remain fully visible!
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              height: 1.3, // cleaner line spacing for wrapped text
+              height: 1.3,
               color: Color.lerp(
                 Colors.white38,
                 const Color(0xFFFFE0B2).withValues(alpha: 0.6),
@@ -427,7 +419,7 @@ double _getAttenuatedGlow(double baseGlow, double depth) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Profile header — horizontal on tablet/desktop, centered stack on mobile.
+// Profile header
 // ─────────────────────────────────────────────────────────────────────────────
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key, required this.isMobile, required this.glow});
@@ -607,7 +599,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        // A. The Profile Image
                         Image.asset(
                           "assets/kalimullah_main.jpg",
                           fit: BoxFit.cover,
@@ -624,8 +615,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             );
                           },
                         ),
-
-                        // B. Dark Room Overlay
                         IgnorePointer(
                           child: Container(
                             color: Colors.black.withValues(
@@ -634,8 +623,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             ),
                           ),
                         ),
-
-                        // C. Light Cone & Hotspot Overlays
                         if (effectiveGlow > 0.01) ...[
                           IgnorePointer(
                             child: Container(
@@ -678,8 +665,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             ),
                           ),
                         ],
-
-                        // D. Premium Glass Reflections / Highlights
                         IgnorePointer(
                           child: Container(
                             decoration: BoxDecoration(
@@ -697,8 +682,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             ),
                           ),
                         ),
-
-                        // E. Subtle Inner border
                         IgnorePointer(
                           child: Container(
                             decoration: BoxDecoration(
@@ -716,8 +699,6 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             ),
                           ),
                         ),
-
-                        // 2. Hanging Light Bulb (Moved INSIDE ClipOval with top: 0 to connect to border perfectly)
                         Positioned(
                           top: 0,
                           left: 0,
@@ -726,8 +707,7 @@ class _AvatarWithBulbState extends State<AvatarWithBulb>
                             child: Center(
                               child: SizedBox(
                                 width: 32,
-                                height:
-                                    26, // Reduced height to shorten the wire
+                                height: 26,
                                 child: CustomPaint(
                                   painter: LightBulbPainter(
                                     glowIntensity: effectiveGlow,
