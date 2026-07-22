@@ -152,7 +152,11 @@ Widget _buildResponsiveCards(
           PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 600),
             pageBuilder: (_, __, ___) =>
-                DetailPage(heroTag: 'hero_work', child: statRightWidget),
+                DetailPage(
+                  heroTag: 'hero_work',
+                  child: statRightWidget,
+                  htmlAssetPath: 'assets/record_of_work.html',
+                ),
           ),
         );
       },
