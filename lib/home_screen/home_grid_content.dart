@@ -449,8 +449,6 @@ class ProfileHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          _avatar(100),
-          const SizedBox(width: 20),
           Expanded(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -459,12 +457,17 @@ class ProfileHeader extends StatelessWidget {
                 _headingText(24, TextAlign.start),
                 const SizedBox(height: 8),
                 _bodyText(TextAlign.start),
-                const SizedBox(height: 12),
-                _buildGlassButton("Hire me", glow, () {
-                  // Link to upwork frofile
-                }),
               ],
             ),
+          ),
+          const SizedBox(width: 20),
+
+          Column(
+            children: [
+              _avatar(100),
+              const SizedBox(height: 12),
+              _varGlassButton,
+            ],
           ),
         ],
       ),
@@ -481,12 +484,14 @@ class ProfileHeader extends StatelessWidget {
         const SizedBox(height: 10),
         _bodyText(TextAlign.center),
         const SizedBox(height: 12),
-        _buildGlassButton("Hire me", glow, () {
-          // Link to upwork frofile
-        }),
+        _varGlassButton,
       ],
     );
   }
+
+  Widget get _varGlassButton => _buildGlassButton("Hire me", glow, () {
+    // Link to upwork frofile
+  });
 
   Widget _avatar(double size) {
     return AvatarWithBulb(size: size, mainGlow: glow);
