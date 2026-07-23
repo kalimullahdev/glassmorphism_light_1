@@ -432,11 +432,11 @@ class ProfileHeader extends StatelessWidget {
   static const String _headline = 'Kalim ullah (Software Engineer)';
   static const String _body =
       'I build fully functional mobile and web applications, powered by deep '
-      'expertise in FlutterFlow, Flutter, Dart, Firebase, Supabase, REST API '
-      'integration, AI integration, and payment integration. This foundation lets '
-      'me tackle complex development challenges and deliver clean, reliable, '
-      'scalable, production-ready applications tailored to the client\'s vision.';
-
+      'expertise in FlutterFlow, Flutter, Dart, Firebase, and Supabase, along '
+      'with seamless integration of REST APIs, AI, payment systems, and other '
+      'third-party services. This foundation lets me tackle complex '
+      'development challenges and deliver clean, reliable, scalable, '
+      'production-ready applications tailored to the client\'s vision.';
   @override
   Widget build(BuildContext context) {
     return isMobile ? _buildVertical() : _buildHorizontal();
@@ -447,6 +447,7 @@ class ProfileHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           _avatar(100),
           const SizedBox(width: 20),
@@ -458,6 +459,10 @@ class ProfileHeader extends StatelessWidget {
                 _headingText(24, TextAlign.start),
                 const SizedBox(height: 8),
                 _bodyText(TextAlign.start),
+                const SizedBox(height: 12),
+                _buildGlassButton("Hire me", glow, () {
+                  // Link to upwork frofile
+                }),
               ],
             ),
           ),
@@ -475,6 +480,10 @@ class ProfileHeader extends StatelessWidget {
         _headingText(22, TextAlign.center),
         const SizedBox(height: 10),
         _bodyText(TextAlign.center),
+        const SizedBox(height: 12),
+        _buildGlassButton("Hire me", glow, () {
+          // Link to upwork frofile
+        }),
       ],
     );
   }
@@ -502,6 +511,64 @@ class ProfileHeader extends StatelessWidget {
           letterSpacing: 1,
           height: 1.2,
         ).copyWith(fontSize: fontSize),
+      ),
+    );
+  }
+
+  Widget _buildGlassButton(
+    String text,
+    double glow,
+    VoidCallback onTap, {
+    bool isPrimary = false,
+  }) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            gradient: isPrimary
+                ? LinearGradient(
+                    colors: [
+                      Color.lerp(
+                        Colors.white.withValues(alpha: 0.12),
+                        const Color(0xFFFFD48A).withValues(alpha: 0.3),
+                        glow,
+                      )!,
+                      Color.lerp(
+                        Colors.white.withValues(alpha: 0.06),
+                        const Color(0xFFFFA726).withValues(alpha: 0.15),
+                        glow,
+                      )!,
+                    ],
+                  )
+                : null,
+            color: isPrimary ? null : Colors.white.withValues(alpha: 0.05),
+            border: Border.all(
+              color: isPrimary
+                  ? Color.lerp(
+                      Colors.white.withValues(alpha: 0.2),
+                      const Color(0xFFFFD48A).withValues(alpha: 0.5),
+                      glow,
+                    )!
+                  : Colors.white.withValues(alpha: 0.1),
+              width: 1.5,
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: isPrimary
+                  ? Color.lerp(Colors.white70, const Color(0xFFFFE8C0), glow)
+                  : Colors.white.withValues(alpha: 0.5),
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              letterSpacing: 1,
+            ),
+          ),
+        ),
       ),
     );
   }
