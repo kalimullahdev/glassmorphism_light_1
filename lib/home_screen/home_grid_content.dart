@@ -55,17 +55,19 @@ Widget _buildResponsiveCards(
   );
 
   final hero = MouseRegion(
-    cursor: SystemMouseCursors.click,
+    // Uncomment later
+    // cursor: SystemMouseCursors.click,
     child: GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 600),
-            pageBuilder: (_, _, _) =>
-                DetailPage(heroTag: 'hero_profile', child: heroCardWidget),
-          ),
-        );
+        // Uncomment later
+        // Navigator.push(
+        //   context,
+        //   PageRouteBuilder(
+        //     transitionDuration: const Duration(milliseconds: 600),
+        //     pageBuilder: (_, _, _) =>
+        //         DetailPage(heroTag: 'hero_profile', child: heroCardWidget),
+        //   ),
+        // );
       },
       child: Hero(
         tag: 'hero_profile',
@@ -429,10 +431,11 @@ class ProfileHeader extends StatelessWidget {
 
   static const String _headline = 'Kalim ullah (Software Engineer)';
   static const String _body =
-      'I build fully functional mobile and web applications powered '
-      'by deep expertise in FlutterFlow, Flutter, Dart, Firebase, Supabase, Rest API, AI and Payment Integration. This foundation lets '
-      'me solve complex development challenges with clean, reliable, scalable, '
-      'production-ready results.';
+      'I build fully functional mobile and web applications, powered by deep '
+      'expertise in FlutterFlow, Flutter, Dart, Firebase, Supabase, REST API '
+      'integration, AI integration, and payment integration. This foundation lets '
+      'me tackle complex development challenges and deliver clean, reliable, '
+      'scalable, production-ready applications tailored to the client\'s vision.';
 
   @override
   Widget build(BuildContext context) {

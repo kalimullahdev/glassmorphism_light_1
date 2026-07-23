@@ -343,19 +343,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   return SizedBox(
                     width: cardWidth,
                     child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
+                      // Uncomment later
+                      // cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration: const Duration(milliseconds: 600),
-                              pageBuilder: (_, _, _) => DetailPage(
-                                heroTag: 'hero_project_${project.name}',
-                                child: cardWidget,
-                              ),
-                            ),
-                          );
+                          // Uncomment later
+                          // Navigator.push(
+                          //   context,
+                          //   PageRouteBuilder(
+                          //     transitionDuration: const Duration(milliseconds: 600),
+                          //     pageBuilder: (_, _, _) => DetailPage(
+                          //       heroTag: 'hero_project_${project.name}',
+                          //       child: cardWidget,
+                          //     ),
+                          //   ),
+                          // );
                         },
                         child: Hero(
                           tag: 'hero_project_${project.name}',
